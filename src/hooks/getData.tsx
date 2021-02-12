@@ -2,23 +2,7 @@ import React, { useCallback } from 'react'
 
 import { parse } from 'papaparse'
 
-type ObjFromCSV = {
-  Item_code: string
-  item_category: string
-  year_ref: string
-  week_ref: string
-  markdown: string
-  margin: string
-  revenues: string
-}
-type Filtered = {
-  Item_code: string
-  item_category: string
-  markdown: string
-  margin: string
-  revenues: string
-  date: { year_ref: string; week_ref: string }
-}
+import { Filtered, ObjFromCSV } from '../types'
 
 export const useGetData = () => {
   const getData = useCallback(async (): Promise<Filtered[]> => {
