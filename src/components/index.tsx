@@ -1,1 +1,2 @@
-export { NavBarComponent } from './NavBar.component/Navbar.component'
+export { NavBarComponent } from './Navbar.component'
+export { SwitchBarComponent } from './SwitchBar.component'
