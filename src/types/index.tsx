@@ -16,16 +16,21 @@ export type ObjFromCSV = {
   margin: string
   revenues: string
 }
-export type Filtered = {
+export interface Filtered {
   Item_code: string
   item_category: string
-  markdown: string
-  margin: string
-  revenues: string
-  date: { year_ref: string; week_ref: string }
+  markdown: number
+  margin: number
+  revenues: number
+  date: string
 }
 
 export type PropsSwitchBar = {
+  ndx?: NdxState
   resetHandler: () => void
   dropdownPropertyHandler: (e: ChangeEvent<HTMLSelectElement>) => void
+}
+export type PropsPieChartsComponent = {
+  ndx: NdxState
+  groupParam: string
 }

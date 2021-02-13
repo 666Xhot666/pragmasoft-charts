@@ -1,10 +1,10 @@
 import React, { useState, ChangeEvent } from 'react'
 
-import { SwitchBarComponent } from '../components'
+import { SwitchBarComponent, PieChartComponent } from '../components'
 
 import { PropMainPage } from '../types'
 
-export const MainPage: React.FC<PropMainPage> = (ndx): JSX.Element => {
+export const MainPage: React.FC<PropMainPage> = ({ ndx }): JSX.Element => {
   const [groupParam, setGroupParam] = useState('markdown') //markdown || revenues || margin
 
   const dropdownPropertyHandler = (e: ChangeEvent<HTMLSelectElement>): void => {
@@ -24,9 +24,11 @@ export const MainPage: React.FC<PropMainPage> = (ndx): JSX.Element => {
     <div className='main-page'>
       <div className='container'>
         <SwitchBarComponent
+          // ndx={ndx}
           resetHandler={resetHandler}
           dropdownPropertyHandler={dropdownPropertyHandler}
         />
+        <PieChartComponent ndx={ndx} groupParam={groupParam} />
         MainPage
       </div>
     </div>

@@ -20,13 +20,17 @@ export const useGetData = () => {
           margin,
           revenues,
         } = obj as ObjFromCSV
+        const date = `${year_ref}/${week_ref}`
+        const markdownN = +markdown
+        const marginN = +margin
+        const revenuesN = +revenues
         return {
           Item_code,
           item_category,
-          markdown,
-          margin,
-          revenues,
-          date: { year_ref, week_ref },
+          markdown: markdownN,
+          margin: marginN,
+          revenues: revenuesN,
+          date,
         }
       }
     )
