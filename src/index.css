@@ -14,11 +14,6 @@ code {
     monospace;
 }
 
-#dropdown1 {
-  width: 150px !important;
-}
-
-#dropdown1 input {
-  width: 100%;
-  margin-top: 5px;
+.switch-bar {
+  margin-top: 20px;
 }

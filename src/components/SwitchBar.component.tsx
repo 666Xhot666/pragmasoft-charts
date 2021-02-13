@@ -1,61 +1,34 @@
-import React, { useEffect, useState, MouseEvent, useCallback } from 'react'
+import React from 'react'
 import M from 'materialize-css'
 
-export const SwitchBarComponent = () => {
-  const [groupParam, setGroupParam] = useState('markdown') //markdown || revenues || margin
+import { PropsSwitchBar } from '../types'
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const elems = document.querySelectorAll('.dropdown-trigger')
-    const instances = M.Dropdown.init(elems, {
-      hover: true,
-      coverTrigger: false,
-      onCloseStart: propHandler,
-    })
-  })
-
-  const propHandler = useCallback(() => {
-    setGroupParam((prev) => {
-      console.log(`Worked future callback ${prev}`)
-      return prev
-    })
-  }, [])
+export const SwitchBarComponent: React.FC<PropsSwitchBar> = (params) => {
+  const { resetHandler, dropdownPropertyHandler } = params
 
   //markdown || revenues || margin
-  return (
-    <div className='switch-bar center-align'>
-      <input
-        className='dropdown-trigger btn pulse'
-        data-target='dropdown1'
-        type='button'
-        value={groupParam}
-      />
+  document.addEventListener('DOMContentLoaded', () => {
+    M.FormSelect.init(document.querySelectorAll('select'))
+  })
 
-      <ul id='dropdown1' className='dropdown-content'>
-        <li>
-          <input
-            type='button'
-            value='markdown'
-            onClick={() => setGroupParam('markdown')}
-            className='btn-large blue darken-3'
-          />
-        </li>
-        <li>
-          <input
-            type='button'
-            value='revenues'
-            onClick={() => setGroupParam('revenues')}
-            className='btn-large blue darken-3'
-          />
-        </li>
-        <li>
-          <input
-            type='button'
-            value='margin'
-            onClick={() => setGroupParam('margin')}
-            className='btn-large blue darken-3'
-          />
-        </li>
-      </ul>
+  return (
+    <div className='switch-bar center-align row'>
+      <div className='select col s12 m6 l2'>
+        <select id='parameters' onChange={dropdownPropertyHandler}>
+          <option value='markdown'>markdown</option>
+          <option value='revenues'>revenues</option>
+          <option value='margin'> margin</option>
+        </select>
+        <label htmlFor='parameters'>Parameter Select</label>
+      </div>
+      <div className='button col s12 m6 l2 offset-l8'>
+        <button
+          className='btn-large btn-floating orange darken-4'
+          onClick={resetHandler}
+        >
+          Reset all
+        </button>
+      </div>
     </div>
   )
 }

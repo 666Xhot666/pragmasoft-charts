@@ -1,4 +1,5 @@
 import { Crossfilter } from 'crossfilter2'
+import { ChangeEvent } from 'react'
 
 export type NdxState = Crossfilter<Filtered>
 
@@ -22,4 +23,9 @@ export type Filtered = {
   margin: string
   revenues: string
   date: { year_ref: string; week_ref: string }
+}
+
+export type PropsSwitchBar = {
+  resetHandler: () => void
+  dropdownPropertyHandler: (e: ChangeEvent<HTMLSelectElement>) => void
 }
