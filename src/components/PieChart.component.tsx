@@ -32,16 +32,19 @@ export const PieChartComponent: React.FC<PropsChartsComponent> = ({
             ? d.revenues
             : d.markdown
         )
-      console.log(`Pie Chart:`, group.all())
-      return pieChart('#pie-chart')
-        .width(800)
-        .height(550)
-        .dimension(dimension)
-        .group(group)
-        .legend(dcLagend().gap(10))
-        .colors(d3.scaleOrdinal(d3.schemeCategory10))
-        .on('pretransition', prettransition)
-        .render()
+      // console.log(`Pie Chart:`, group.all())
+      return (
+        pieChart('#pie-chart')
+          .width(800)
+          .height(350)
+          // .useViewBoxResizing(true)
+          .dimension(dimension)
+          .group(group)
+          .legend(dcLagend().gap(5))
+          .colors(d3.scaleOrdinal(d3.schemeCategory10))
+          .on('pretransition', prettransition)
+          .render()
+      )
     },
     [ndx]
   )
@@ -51,7 +54,7 @@ export const PieChartComponent: React.FC<PropsChartsComponent> = ({
   }, [updateChart, groupParam])
 
   return (
-    <div className='pie-chart center'>
+    <div className='pie-chart center s12 m9 offset-m3'>
       <div id='pie-chart' />
     </div>
   )
