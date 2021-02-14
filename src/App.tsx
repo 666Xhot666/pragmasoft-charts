@@ -5,7 +5,7 @@ import { MainPage } from './pages'
 
 import { useGetData } from './hooks'
 
-import { Filtered, NdxState } from './types'
+import { NdxState } from './types'
 
 export const App = (): JSX.Element => {
   const { getData } = useGetData()

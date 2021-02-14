@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 
 import { parse } from 'papaparse'
 
@@ -25,15 +25,12 @@ export const useGetData = () => {
           revenues,
         } = obj as ObjFromCSV
         const date = dateParse(`${year_ref}/${week_ref}`)
-        const markdownN = +markdown
-        const marginN = +margin
-        const revenuesN = +revenues
         return {
           Item_code,
           item_category,
-          markdown: markdownN,
-          margin: marginN,
-          revenues: revenuesN,
+          markdown: +markdown,
+          margin: +margin,
+          revenues: +revenues,
           date,
         }
       }

@@ -27,7 +27,6 @@ export interface Filtered {
 
 export type PropsSwitchBar = {
   ndx?: NdxState
-  resetHandler: () => void
   dropdownPropertyHandler: (e: ChangeEvent<HTMLSelectElement>) => void
 }
 export type PropsChartsComponent = {
