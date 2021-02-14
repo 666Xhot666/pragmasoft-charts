@@ -1,6 +1,10 @@
 import React, { useState, ChangeEvent } from 'react'
 
-import { SwitchBarComponent, PieChartComponent } from '../components'
+import {
+  SwitchBarComponent,
+  PieChartComponent,
+  LineChartComponent,
+} from '../components'
 
 import { PropMainPage } from '../types'
 
@@ -29,7 +33,7 @@ export const MainPage: React.FC<PropMainPage> = ({ ndx }): JSX.Element => {
           dropdownPropertyHandler={dropdownPropertyHandler}
         />
         <PieChartComponent ndx={ndx} groupParam={groupParam} />
-        MainPage
+        <LineChartComponent ndx={ndx} groupParam={groupParam} />
       </div>
     </div>
   )

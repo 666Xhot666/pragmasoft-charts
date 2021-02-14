@@ -30,7 +30,7 @@ export type PropsSwitchBar = {
   resetHandler: () => void
   dropdownPropertyHandler: (e: ChangeEvent<HTMLSelectElement>) => void
 }
-export type PropsPieChartsComponent = {
+export type PropsChartsComponent = {
   ndx: NdxState
   groupParam: string
 }
