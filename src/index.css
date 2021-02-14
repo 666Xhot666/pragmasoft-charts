@@ -1,5 +1,5 @@
 @import '~materialize-css/dist/css/materialize.min.css';
-@import '~dc/dist/style/dc.css';
+@import '~dc/dist/style/dc.min.css';
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,11 +9,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .switch-bar {
   margin-top: 20px;
+  padding: 30px 10px;
+}
+
+.pie-chart {
+  margin: 20px auto !important;
+}
+#linechart {
+  margin: 20px auto !important;
 }
