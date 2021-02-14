@@ -38,7 +38,7 @@ export const PieChartComponent: React.FC<PropsChartsComponent> = ({
         .height(550)
         .dimension(dimension)
         .group(group)
-        .legend(dcLagend())
+        .legend(dcLagend().gap(10))
         .colors(d3.scaleOrdinal(d3.schemeCategory10))
         .on('pretransition', prettransition)
         .render()
