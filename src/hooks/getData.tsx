@@ -4,6 +4,10 @@ import { parse } from 'papaparse'
 
 import { Filtered, ObjFromCSV } from '../types'
 
+const d3 = require('d3')
+
+const dateParse = d3.timeParse('%Y/%W')
+
 export const useGetData = () => {
   const getData = useCallback(async (): Promise<Filtered[]> => {
     const response = await fetch('/data.csv')
@@ -20,7 +24,7 @@ export const useGetData = () => {
           margin,
           revenues,
         } = obj as ObjFromCSV
-        const date = `${year_ref}/${week_ref}`
+        const date = dateParse(`${year_ref}/${week_ref}`)
         const markdownN = +markdown
         const marginN = +margin
         const revenuesN = +revenues
