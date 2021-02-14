@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect } from 'react'
 import { utils, pieChart, legend as dcLagend } from 'dc'
-import { PropsPieChartsComponent } from '../types'
+import { PropsChartsComponent } from '../types'
 
-export const PieChartComponent: React.FC<PropsPieChartsComponent> = (
-  props
-): JSX.Element => {
-  const { ndx, groupParam } = props
+const d3 = require('d3')
 
+export const PieChartComponent: React.FC<PropsChartsComponent> = ({
+  ndx,
+  groupParam,
+}): JSX.Element => {
   const prettransition = (chart: any) => {
     chart.selectAll('text.pie-slice').text((d: any) => {
       const percent = ((d.endAngle - d.startAngle) / (2 * Math.PI)) * 100
@@ -19,7 +20,7 @@ export const PieChartComponent: React.FC<PropsPieChartsComponent> = (
   }
 
   const updateChart = useCallback(
-    (parameter) => {
+    (parameter): void => {
       if (!ndx) return
       const dimension = ndx.dimension((d) => d.item_category)
       const group = dimension
@@ -31,13 +32,14 @@ export const PieChartComponent: React.FC<PropsPieChartsComponent> = (
             ? d.revenues
             : d.markdown
         )
-      console.log(group?.all())
+      console.log(`Pie Chart:`, group.all())
       return pieChart('#pie-chart')
         .width(800)
         .height(550)
         .dimension(dimension)
         .group(group)
         .legend(dcLagend())
+        .colors(d3.scaleOrdinal(d3.schemeCategory10))
         .on('pretransition', prettransition)
         .render()
     },
