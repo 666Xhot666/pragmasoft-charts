@@ -13,6 +13,7 @@ export const App = (): JSX.Element => {
 
   const fetchData = useCallback(async () => {
     const data = await getData()
+    //remove last undefined element of data array
     data.pop()
     const ndx = crossfilter(data)
     setNdx(ndx)

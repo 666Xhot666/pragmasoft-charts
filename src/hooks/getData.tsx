@@ -4,10 +4,10 @@ import { parse } from 'papaparse'
 
 import { Filtered, ObjFromCSV } from '../types'
 
-const d3 = require('d3')
+const d3 = require('d3') // required used for fix type import error
 
 const dateParse = d3.timeParse('%Y/%W')
-
+//loading and parsing data.csv fom public folder
 export const useGetData = () => {
   const getData = useCallback(async (): Promise<Filtered[]> => {
     const response = await fetch('/data.csv')
@@ -24,6 +24,7 @@ export const useGetData = () => {
           margin,
           revenues,
         } = obj as ObjFromCSV
+        //date formate
         const date = dateParse(`${year_ref}/${week_ref}`)
         return {
           Item_code,

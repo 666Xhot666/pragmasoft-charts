@@ -8,6 +8,7 @@ export const PieChartComponent: React.FC<PropsChartsComponent> = ({
   ndx,
   groupParam,
 }): JSX.Element => {
+  // set percent parameter to pie-slice  like "AA 20.00%""
   const prettransition = (chart: any) => {
     chart.selectAll('text.pie-slice').text((d: any) => {
       const percent = ((d.endAngle - d.startAngle) / (2 * Math.PI)) * 100
@@ -49,6 +50,7 @@ export const PieChartComponent: React.FC<PropsChartsComponent> = ({
     [ndx]
   )
 
+  //loading and rendering Pie chart when component is loaded and groupParam is changed
   useEffect(() => {
     updateChart(groupParam)
   }, [updateChart, groupParam])

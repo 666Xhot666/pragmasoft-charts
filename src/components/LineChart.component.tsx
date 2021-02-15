@@ -24,7 +24,7 @@ export const LineChartComponent: FC<PropsChartsComponent> = ({
         )
 
       // console.log(`Line Chart:`, group.all())
-
+      //filtering records by time parameter selected from brush
       const filterHandler = (_: any, filters: any) => {
         if (!filters.length) {
           dimension.filter(null!)
@@ -59,7 +59,7 @@ export const LineChartComponent: FC<PropsChartsComponent> = ({
           dc.legend().x(100).y(0).legendWidth(1000).gap(10).horizontal(true)
         )
       chart.filterHandler(filterHandler)
-
+      //display selected time parameters from brush
       chart.on('filtered', (chart: any) => {
         const filters = chart.filters()
         if (filters.length) {
@@ -68,14 +68,13 @@ export const LineChartComponent: FC<PropsChartsComponent> = ({
           setFilters([])
         }
       })
-      //
-      //
       chart.margins().left += 50
       return chart.render()
     },
     [groupParam, ndx]
   )
 
+  //loading and rendering Line chart when component is loaded and groupParam is changed
   useEffect(() => {
     updateChart(groupParam)
     // console.log('Update Line chart')
@@ -102,6 +101,7 @@ export const LineChartComponent: FC<PropsChartsComponent> = ({
           </div>
         )}
       </div>
+      {/* div for DC chart */}
       <div id='linechart' />
     </div>
   )

@@ -11,10 +11,12 @@ export const SwitchBarComponent: React.FC<PropsSwitchBar> = (
   const { dropdownPropertyHandler } = params
 
   //markdown || revenues || margin
+  //init select
   document.addEventListener('DOMContentLoaded', () => {
     M.FormSelect.init(document.querySelectorAll('select'))
   })
 
+  //udatin dataCount (selected records by filter  or group from all records)
   const updateCount = useCallback((): void => {
     const { ndx } = params
     if (!ndx) return
@@ -23,6 +25,7 @@ export const SwitchBarComponent: React.FC<PropsSwitchBar> = (
     return dataCountHandler.render()
   }, [params])
 
+  //loading element when component is loaded
   useEffect(() => {
     updateCount()
   }, [updateCount])
@@ -46,6 +49,7 @@ export const SwitchBarComponent: React.FC<PropsSwitchBar> = (
       <div className='button col s12 m6 l2 offset-l8'>
         <button
           className='btn-large  green darken-2 waves-effect'
+          //reset all selected filters and groups, redraw both charts
           onClick={() => {
             filterAll()
             refocusAll()
